@@ -15,7 +15,7 @@ AllowedCPUs=0-31,64-95
 ```
 使其生效后，所有用户将被限制使用0-31和64-95的cpu逻辑核。
 ```
-systemctl daemon-reload
+sudo systemctl daemon-reload
 ```
 
 ## cgroup v2 创建自己的group使其能访问所有cpu或访问指定cpu

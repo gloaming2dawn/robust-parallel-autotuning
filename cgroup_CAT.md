@@ -28,3 +28,14 @@ sudo cgset -r cpuset.cpus=0-127 mygroup
 ```
 sudo cgexec -g cpuset:mygroup cmd
 ```
+
+## Cache Allocation Technology (CAT)
+安装intel-cmt-cat
+如果命令出现初始化错误如下：
+> API lock initialization error!  
+> Allocation: Error initializing PQoS library!
+
+使用以下命令解决
+```
+sudo rm /var/lock/libpqos
+```

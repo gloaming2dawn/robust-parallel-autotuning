@@ -1,5 +1,11 @@
 # 基于cgroup和Cache Allocation Technology (CAT)实现资源隔离
 以下流程在Ubuntu22下测试通过
+## 锁定cpu频率
+```
+sudo cpupower frequency-set --governor userspace
+sudo cpupower frequency-set --freq 2250MHz
+cpufreq-info
+```
 
 ## 限制所有用户的资源使用
 

@@ -40,3 +40,8 @@ sudo cgexec -g cpuset:mygroup cmd
 ```
 sudo rm /var/lock/libpqos
 ```
+
+使用rdtset分配资源运行命令
+```
+sudo cgexec -g cpuset:mygroup rdtset -t 'l3=0xfff0;mba=90;cpu=32-63,96-127' -c 32-63,96-127 -k cmd
+```

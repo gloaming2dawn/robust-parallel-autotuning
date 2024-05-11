@@ -49,9 +49,9 @@ sudo rm /var/lock/libpqos
 
 使用pqos限制COS1的资源，并绑定cpu核
 ```
-sudo pqos -e "llc:1=0x000f;llc:2=0xfff0"
-sudo pqos -a "llc:1=0-31,64-95;llc:2=32-63,96-127"
-sudo pqos -e "mba:1=10;mba:2=90;"
+sudo pqos -e "llc:1=0x000f;"
+sudo pqos -a "llc:1=0-31,64-95;"
+sudo pqos -e "mba:1=10;"
 ```
 使用rdtset分配资源运行命令
 ```

@@ -17,7 +17,7 @@ sudo nano /etc/systemd/system/user-.slice.d/limitcpus.conf
 在limitcpus.conf中输入以下内容来控制所有用户对cpu资源的访问
 ```
 [Slice]
-AllowedCPUs=0-31,64-95
+AllowedCPUs=0-15,64-79
 ```
 使其生效后，所有用户将被限制使用0-31和64-95的cpu逻辑核。
 ```
@@ -50,7 +50,7 @@ sudo rm /var/lock/libpqos
 使用pqos限制COS1的资源，并绑定cpu核
 ```
 sudo pqos -e "llc:1=0x000f;"
-sudo pqos -a "llc:1=0-31,64-95;"
+sudo pqos -a "llc:1=0-15,64-79;"
 sudo pqos -e "mba:1=10;"
 ```
 使用rdtset分配资源运行命令

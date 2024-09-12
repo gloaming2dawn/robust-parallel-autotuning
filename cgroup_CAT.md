@@ -34,6 +34,12 @@ sudo cgset -r cpuset.cpus=0-127 mygroup
 ```
 sudo cgexec -g cpuset:mygroup cmd
 ```
+## NUMA设定
+先在bios中打开numa，通过numa节点划分来实现内存带宽隔离。
+然后使用以下命令禁用 NUMA 自动均衡
+```
+sudo sysctl kernel.numa_balancing=0
+```
 
 ## Cache Allocation Technology (CAT)
 安装intel-cmt-cat
@@ -53,7 +59,7 @@ sudo pqos -e "llc:1=0x000f;"
 sudo pqos -a "llc:1=0-15,64-79;"
 sudo pqos -e "mba:1=10;"
 ```
-使用rdtset分配资源运行命令
+使用rdtset分配资源运行命令，同时使用numactl --membind来指定numa内存节点
 ```
-sudo cgexec -g cpuset:mygroup rdtset -t 'l3=0xfff0;mba=90;cpu=32-63,96-127' -c 32-63,96-127 -k cmd
+sudo cgexec -g cpuset:mygroup rdtset -t 'l3=0xfff0;mba=90;cpu=32-63,96-127' -c 32-63,96-127 -k numactl --membind=1 cmd
 ```

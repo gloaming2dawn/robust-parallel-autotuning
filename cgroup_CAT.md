@@ -63,3 +63,7 @@ sudo pqos -e "mba:1=10;"
 ```
 sudo cgexec -g cpuset:mygroup rdtset -t 'l3=0xfff0;mba=90;cpu=32-63,96-127' -c 32-63,96-127 -k numactl --membind=1 cmd
 ```
+重置
+```
+sudo pqos -R
+```
